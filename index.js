@@ -38,7 +38,7 @@ app.put('/', function(req, res, next) {
         const product = JSON.parse(data)
 
       
-            product.splice(2,0,{"title": "New mouse","description": "Gamingmus / trådlös / Optisk.","id": 7,"price": 149 });
+            product.splice(2,1,{"title": "New mouse","description": "Gamingmus / trådlös / Optisk.","id": 7,"price": 149 });
       
         
         fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
