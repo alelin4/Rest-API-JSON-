@@ -1,0 +1,26 @@
+[
+  {
+    "title": "SteelSeries Rival 3",
+    "description": "Gamingmus / Kabelansluten / Optisk / 8500 cpi.",
+    "id": 0,
+    "price": 649
+  },
+  {
+    "title": "Logitech G Pro",
+    "description": "Gamingmus / Trådlös / Optisk / 16000 dpi.",
+    "id": 1,
+    "price": 1099
+  },
+  {
+    "title": "Razer Naga X",
+    "description": "Gamingmus / Kabelansluten / Optisk / 18000 dpi.",
+    "id": 2,
+    "price": 979
+  },
+  {
+    "title": "Deltaco GAM-029",
+    "description": "Gamingmus / Kabelansluten / Optisk / 2000 dpi.",
+    "id": 3,
+    "price": 149
+  }
+]
