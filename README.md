@@ -6,3 +6,5 @@ GET hämtar alla produkter i json filen och visar dem.
 DELETE tar bort en resurs genom att man skriver i koden på splice vilken produkt du vill ta bort.
 PUT uppdatera en nuvarnde produkt. 
 POST lägger till en produkt i json filen och även lägger upp den.
+
+Alla G-kraven ska vara uppfyllda
