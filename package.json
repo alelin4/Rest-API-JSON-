@@ -7,9 +7,17 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alelin4/rest.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alelin4/rest/issues"
+  },
+  "homepage": "https://github.com/alelin4/rest#readme",
   "dependencies": {
     "express": "^4.18.2",
     "nodemon": "^2.0.20"

@@ -1,15 +1,12 @@
-const { json } = require("express");
-var express = require("express");
 
+var express = require('express');
+var app = express(); 
+  
 const fs = require("fs");
-
-const app = express();
-
-
-app.listen(3000, ()=> console.log("Server is up"));
+app.use(express.json());
 
 
-//get json
+
 app.get('/', function(req, res, next) {
 
     fs.readFile("product.json", function(err, data) {
@@ -26,8 +23,41 @@ app.get('/', function(req, res, next) {
     });
 
 }) ;
+
+app.post('/users', (req, res, next)=>{
+   
+    fs.readFile("product.json", function(err, data) {
+
+        if(err){
+            console.log(err);
+        }
+
+
+        const product = JSON.parse(data)
+
+        let newProduct = req.body;
+
+        product.push(newProduct);
+        console.log(newProduct);
+
+    fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
+        if(err){
+          console.log(err);
+        }  
+      })
+
+        res.send(product);
+       
+        return;
+
+  });
+
+  })
+
+
+  
  
-app.put('/', function(req, res, next) {
+app.put('/users/:id', function(req, res, next) {
 
     fs.readFile("product.json", function(err, data) {
 
@@ -35,86 +65,89 @@ app.put('/', function(req, res, next) {
             console.log(err);
         }
 
+
         const product = JSON.parse(data)
 
-      
-            product.splice(2,1,{"title": "New mouse","description": "Gamingmus / trådlös / Optisk.","id": 7,"price": 149 });
-      
-        
-        fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
-            if(err){
-              console.log(err);
-            }  
-          })
-   res.send(product);
-        return;
-    });
+        let id = req.params['id']
+        let newProduct = req.body;
 
-}) ;
- 
+        product.splice(id,1,newProduct)
+        console.log(newProduct);
 
-
- 
-      app.post('/', (req, res, next)=>{
-
-        fs.readFile("product.json", function(err, data) {
-    
-            if(err){
-                console.log(err);
-            }
-
-            const product = JSON.parse(data)
-
-            let newProduct = {"title": "adea","description": "Gamingmus / Kabelansluten / Optisk / 2000 dpi.","id": 6,"price": 149 };
-
-            product.push(newProduct);
-           
-              
-        fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
-            if(err){
-              console.log(err);
-            }  
-          })
-
-            res.send(product);
-            
-            return;
-    
-      });
-
+    fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
+        if(err){
+          console.log(err);
+        }  
       })
 
- 
-
-
-
-app.delete('/', function(req, res, next) {
-
-        fs.readFile("product.json", function(err, data) {
-    
-            if(err){
-                console.log(err);
-            }
-           
-            const product = JSON.parse(data)
-      
-             const id = 2;
-        
-            if (id > -1) {
-                product.splice(id, 1);
-              }
-
-              fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
-                if(err){
-                  console.log(err);
-                }  
-              })
-      
-            res.send(product);  
-        
-   
+        res.send(product);
+       
         return;
- 
-            });
+
+
+
+
+
+
+/*
+  fs.readFile("product.json", function(err, data) {
+
+      if(err){
+          console.log(err);
+      }
+
+      const product = JSON.parse(data)
+      var id = req.params['id'];
+
+      let newProduct = req.body;
+          product.splice(id,0,newProduct);
+    
+      
+      fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
+          if(err){
+            console.log(err);
+          }  
+        })
+
+          res.send(product);
+          
+          return;
+  */
+  });
+
 }) ;
 
+
+
+
+app.delete('/:id', function(req, res, next) {
+
+      fs.readFile("product.json", function(err, data) {
+  
+          if(err){
+              console.log(err);
+          }
+         
+          const product = JSON.parse(data)
+    
+           var id = req.params['id'];
+      
+          if (id > -1) {
+              product.splice(id,1);
+            }
+
+            fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
+              if(err){
+                console.log(err);
+              }  
+            })
+    
+          res.send(product);  
+      
+ 
+      return;
+
+          });
+}) ;
+
+  app.listen(3000, ()=> console.log("Server is up"));

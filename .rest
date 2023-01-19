@@ -1,0 +1,33 @@
+GET http://localhost:3000/
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+//Nedan är förslag på ändring
+
+    {
+    "title": "Steelseries Aerox 5",
+    "description": "Gamingmus / Kabelansluten / Optisk / 18000 cpi / Mattsvart /,",
+    "id":4 ,
+    "price":899
+    }
+
+
+###
+PUT http://localhost:3000/users/4
+Content-Type: application/json
+//Id väljer man genom ändra slut siffran i url.
+//Nedan är förslag på ändring
+
+    {
+      "title": "Steelseries Rival 5",
+      "description": "Gamingmus / Kabelansluten / Optisk / 18000 cpi / Mattsvart",
+      "id": 5,
+      "price":639 
+    }
+
+
+###
+DELETE http://localhost:3000/4
+//Id väljer man genom ändra slut siffran i url.
