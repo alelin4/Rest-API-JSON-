@@ -83,36 +83,7 @@ app.put('/users/:id', function(req, res, next) {
         res.send(product);
        
         return;
-
-
-
-
-
-
-/*
-  fs.readFile("product.json", function(err, data) {
-
-      if(err){
-          console.log(err);
-      }
-
-      const product = JSON.parse(data)
-      var id = req.params['id'];
-
-      let newProduct = req.body;
-          product.splice(id,0,newProduct);
-    
-      
-      fs.writeFile("product.json", JSON.stringify(product, null, 2), function(err){
-          if(err){
-            console.log(err);
-          }  
-        })
-
-          res.send(product);
-          
-          return;
-  */
+        
   });
 
 }) ;
